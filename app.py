@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, File, UploadFile
-from .app.components.counter import people_counter, read_imagefile
+from .counter import people_counter, read_imagefile
 
 app = FastAPI()
 
