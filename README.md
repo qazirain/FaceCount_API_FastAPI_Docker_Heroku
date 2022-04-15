@@ -2,4 +2,4 @@
 
 A POC RestAPI based on FastAPI Docker and hosted on Heroku
 
-The API returns the number of people/faces in an image im json format!
+The API returns the number of faces in an image im json format!
