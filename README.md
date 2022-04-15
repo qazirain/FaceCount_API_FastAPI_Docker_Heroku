@@ -42,3 +42,63 @@ Change into your local copy of the this repo:
     $ cd FastAPI_Docker_Heroku
 
 
+Setup.sh and Procfile
+
+Heroku needs these files for starting the app
+
+    - setup.sh : create a streamlit folder with both credentials.toml and config.toml files.
+    - Procfile : This file executes the setup.sh and then call streamlit run to run the app
+
+```sh
+# Setup.sh
+mkdir -p ~/.streamlit/
+
+echo "\
+[general]\n\
+email = \"your-email@domain.com\"\n\
+" > ~/.streamlit/credentials.toml
+
+echo "\
+[server]\n\
+headless = true\n\
+enableCORS=false\n\
+port = $PORT\n\
+" > ~/.streamlit/config.toml
+```
+```sh
+# Procfile
+web: sh setup.sh && streamlit run app.py
+```
+
+6. Create a Heroku Account
+
+Create a free account
+
+7. Install Heroku CLI
+
+[Follow these steps](https://devcenter.heroku.com/articles/getting-started-with-python#set-up)
+
+8. Login into Heroku CLI
+
+Move to your App folder and execute ```heroku login```
+
+9. Deploy the App
+
+Deploy your app by running ```heroku create``` in your app folder
+
+10. Check it
+
+Check your app by running ```heroku ps:scale web=1```
+
+After that, push your code
+
+```sh
+git add .
+git commit -m "message"
+git push heroku master
+```
+
+11. Open it
+
+Open your app using ```heroku open```
+
